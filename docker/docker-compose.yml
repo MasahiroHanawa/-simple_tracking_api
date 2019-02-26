@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  mysql:
+    build: ./mysql
+    image: mysql:5.6
+    ports:
+    - '3306:3306'
+    environment:
+    - MYSQL_DATABASE=tracking_pixel
+    - MYSQL_USER=test_user
+    - MYSQL_PASSWORD=password
+    - MYSQL_ROOT_PASSWORD=password
+  redis:
+    build: ./redis
+    image: 'redis:alpine'
+  nginx:
+    build: ./nginx
+    image: nginx:latest
+    volumes:
+    - web-sync:/var/www/html
+    ports:
+    - '80:80'
+    links:
+    - web
+  web:
+    build: ./php-fpm
+    volumes:
+    - web-sync:/var/www/html
+    links:
+    - mysql
+    - redis
+    ports:
+    - '9000:9000'
+volumes:
+  web-sync:
+    external: true

@@ -1,0 +1,6 @@
+version: '2'
+
+syncs:
+  web-sync:
+    src: './web'
+    watch_excludes: ['.*/.git', '.*/node_modules', '.*/bower_components', '.*/sass-cache', '.*/.sass-cache', '.*/.sass-cache', '.coffee', '.scss', '.sass', '.gitignore']
