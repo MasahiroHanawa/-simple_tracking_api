@@ -11,9 +11,6 @@ services:
     - MYSQL_USER=test_user
     - MYSQL_PASSWORD=password
     - MYSQL_ROOT_PASSWORD=password
-  redis:
-    build: ./redis
-    image: 'redis:alpine'
   nginx:
     build: ./nginx
     image: nginx:latest

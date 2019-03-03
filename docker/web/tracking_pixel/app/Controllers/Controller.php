@@ -27,6 +27,7 @@ class Controller implements ControllerInterface
         if (is_bool($result) && $result == true) {
             $response = 'data saved';
         } elseif ($result) {
+            var_dump($result);
             $response = 'an existing item already exists';
         } else {
             $response = 'invalid input, object invalid';
